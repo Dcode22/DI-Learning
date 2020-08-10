@@ -1,0 +1,93 @@
+nav {
+	position: fixed;
+	top: 0px;
+	left: 0px;
+	height: 50px;
+	width: 100%; 
+	display: flex;
+	justify-content: space-between;
+	background-color: red;
+	color: navy;
+	font-family: sans-serif;
+	font-weight: bold; 
+	padding: 0px 10px;
+}
+ul {
+	display: inline-flex;
+	justify-content: space-between;
+	list-style-type: none;
+	margin-right: 20px;
+}
+li {
+	margin-left: 20px;
+}
+a {
+	color: navy;
+}
+body {
+	background-image: url(avengers.jpg);
+	background-repeat: no-repeat;
+	background-color: black;
+	color: white;
+	margin-left: 15px
+
+}
+header {
+	float: left;
+	width: 65%;
+	font-family: 'Rubik Mono One', sans-serif;
+	color: navy;
+	text-shadow:  -3px 3px 4px white;
+	margin-top: 40px;
+}
+#para, .par {
+	
+	float: left;
+	font-family: 'Rubik Mono One', sans-serif;
+	width: 65%;
+	font-size: 20px;
+	font-style: italic;
+	margin-top: 60px;
+
+
+}
+img {
+	height: 450px;
+	float: right;
+	margin-top: -116px;
+}
+img:hover {
+	transform: scale(1.2);
+	transition: 1s;
+}
+#aboutimg {
+	margin-top: -630px;
+} 
+footer {
+	background-color: navy;
+	position: fixed;
+	bottom: 0px;
+	left: 0px;
+	width: 100%;
+	color: red;
+	font-family: sans-serif;
+	font-weight: bold;
+	font-size: 15px;
+	text-align: center; 
+}
+footer a {
+	color: red;
+}
+form {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	align-content: center;
+}
+#fanp {
+	margin-top: 200px;
+	font-family: 'Rubik Mono One', sans-serif;
+}
+.form {
+	font-size: 1.2em;
+}
