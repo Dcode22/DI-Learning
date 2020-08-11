@@ -1,0 +1,65 @@
+* {
+    margin: auto;
+    
+}
+.all {
+    background-image: url(background.jpg);
+    background-size: cover;
+}
+nav {
+    
+    text-transform: uppercase;
+    background-color: transparent !important;
+    color: white !important;
+
+   
+    
+}
+.card-group {
+    color: indigo;
+}
+
+footer {
+    background-color: white;
+}
+.tabs {
+    margin-left: 170px;
+}
+nav a {
+    color: white !important;
+}
+#bigcard {
+    margin: 75px;
+    margin-left: 350px;
+    display: flex;
+    justify-content: center;
+    color: white;
+}
+.bigcard1 {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+}
+.buttons3 {
+    display: flex;
+    margin: 15px;
+}
+.bigcardtext {
+    font-size: 30px;
+}
+.ndbutton {
+    background-color: transparent;
+    border: 2px white;
+}
+.stbutton {
+    background-color: indigo;
+    border: none;
+}
+.container3 {
+    color: indigo;
+    font-size: 10px;
+}
+i {
+    font-size: 25px;
+}
