@@ -1,0 +1,56 @@
+body {
+	margin: auto;
+	font-family: sans-serif;
+}
+.zone {
+	background-color:blueviolet;
+	color: white;
+
+}
+ul {
+	display: flex;
+	list-style: none;
+
+}
+a {
+	color: white;
+	text-decoration: none;
+}
+li {
+	padding: 20px;
+}
+.Contacts {
+	margin-left: auto;
+}
+.mainimage {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 70vh;
+}
+.bigpic {
+	width: 30rem;
+}
+.wrapper {
+	display: grid;
+	grid-gap: 20px;
+	grid-template-columns: 1fr 1fr 1fr;
+	margin: 50px;
+	background-color: blueviolet;
+	padding: 15px;
+}
+.box > img {
+	width: 80%;
+}
+.box {
+	background-color: rgb(56, 55, 55);
+	text-align: center;
+}
+footer {
+	background-color: blueviolet;
+	background: linear-gradient( to bottom, lightblue, blue);
+	height: 50px;
+	text-align: center;
+	color: white;
+	padding-top: 10px;
+}

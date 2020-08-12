@@ -1,0 +1,27 @@
+.main {
+	display: grid;
+	height: 100vh;
+	width: 100%;
+	grid-template-columns: 1fr 3fr 1fr;
+	grid-gap: 10px;
+
+}
+.container1 {
+	height: 100vh;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	align-items: center;
+}
+.container2 {
+	height: 100%;
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+}
+.box {
+	background-color: yellow;
+	height: 85px;
+	width: 85px;
+	border: solid black 2px;
+}
