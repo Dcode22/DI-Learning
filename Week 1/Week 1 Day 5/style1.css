@@ -1,0 +1,15 @@
+.navbar {
+	padding-right: 5rem;
+	padding-left: 5rem;
+}
+.jumbotron {
+	padding-right: 5rem;
+	padding-left: 5rem;
+}
+.cards {
+	display: flex;
+	justify-content: center;
+}
+.card {
+	border-style: none;
+}
