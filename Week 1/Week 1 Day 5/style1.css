@@ -1,3 +1,8 @@
+
+.body {
+	display: flex;
+	justify-content: center;
+}
 .navbar {
 	padding-right: 5rem;
 	padding-left: 5rem;
@@ -7,9 +12,19 @@
 	padding-left: 5rem;
 }
 .cards {
+	padding-right: 5rem;
+	padding-left: 5rem;
 	display: flex;
-	justify-content: center;
 }
 .card {
+
 	border-style: none;
+	
+}
+.card-body {
+	
+	padding-left: 0px;
+}
+.pe9 {
+	color: grey;
 }
