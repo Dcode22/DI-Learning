@@ -41,7 +41,7 @@ header {
 	justify-content: center;
 }
 h2 {
-	padding-top: 75px;
+	margin-top: 50px;
 	margin-bottom: 50px;
 	color: orange;
 }
@@ -89,7 +89,7 @@ h2 {
 	grid-template-rows: repeat(2, 1fr);
 	grid-gap: 6px;
 	width: 65%;
-	height: 60vh;
+	height: 65vh;
 }
 .portimg {
 	width: 100%;
@@ -107,16 +107,14 @@ h2 {
 	display: flex;
 	width: 65%;
 	grid-gap: 15px;
-	margin-bottom: 75px;
 }
 .footer {
 	display: grid;
 	grid-template-columns: 1fr 2fr;
 	width: 65%;
 	border-top: solid lightgrey 1px;
-	padding-top: 80px;
-	
-	margin-bottom: 50px;
+	margin-top: 60px;
+	margin-bottom: 40px;
 }
 .getintouch {
 	display: flex;
@@ -128,14 +126,17 @@ h2 {
 	color: orange;
 	height: 100%;
 }
-
+.h2bottom {
+	margin-top: 20px;
+	margin-bottom: 0px;
+}
 .contactform {
 	display: flex;
 	flex-direction: column;
 	grid-gap: 5px;
-	padding: 30px;
+	padding: 15px;
 	font-family: sans-serif;
-	font-size: 20px;
+	font-size: 10px;
 }
 .input {
 	width: 100%;
@@ -145,7 +146,7 @@ h2 {
 	color: grey;
 }
 .message {
-	height: 5em;
+	height: 60px;
 }
 .send {
 	background-color: orange;
