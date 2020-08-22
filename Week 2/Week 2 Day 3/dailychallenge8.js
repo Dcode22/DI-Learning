@@ -3,6 +3,7 @@ function bubble_Sort(arr)
 {
     var swapp;
     var n = arr.length-1;
+    console.log(n);
     var x=arr;
     do {
         swapp = false;
