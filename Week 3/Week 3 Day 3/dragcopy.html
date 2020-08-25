@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+​
+<head>
+    <title>HTML5 Drag-and-Drop</title>
+    <style>
+        body {
+            background-color: lightgray;
+​
+        }
+​
+        #container {
+            position: fixed;
+            border-radius: 10px;
+            background-color: #ABABAB;
+            border: solid 1px black;
+            font: 15px arial, sans-serif;
+            text-align: center;
+​
+            
+​
+        
+        }
+​
+        #slider {
+            position: fixed;
+            border-radius: 10px;
+            background: linear-gradient(to right, #1e5799 0%, #89b3d3 51%, #1e5799 100%);
+            font: 11px arial, sans-serif;
+            text-align: center;
+            cursor: pointer;
+        }
+​
+        div {
+            cursor: default;
+        }
+    </style>
+​
+​
+</head>
+​
+​
+<body>
+​
+​
+    <div id='container'>Drag the blue box around</div>
+​
+    <div id='slider'>Drag Me</div>
+​
+    <script>
+​
+​
+        //before we even start fix the annoying select-cursor bug in Chrome:
+        document.onselectstart = function (e) {
+            e.preventDefault();
+            return false;
+        }
+​
+        //create handles for elements that were instantiated in the HTML markup:
+        var slider = document.getElementById('slider'),
+            container = document.getElementById('container');
+​
+        //define some initial states variables, append to their elements:
+        document.mouseState = 'up';
+        slider.mouseState = 'up';
+        slider.lastMousePosY = null;
+        slider.lastMousePosX = null;
+        slider.proposedNewPosY = parseInt(slider.style.top, 10); //converts '10px' to 10
+        slider.proposedNewPosX = parseInt(slider.style.left, 10);
+​
+        //We will need to access the top and height properties of the slider and track.
+        //Set them here initally rather than in CSS so that we can access them without getComputedStyle calls:
+        slider.style.top = '40px';
+        slider.style.left = '40px';
+        slider.style.height = '60px';
+        slider.style.width = '60px';
+        container.style.top = '20px';
+        container.style.left = '20px';
+        container.style.height = '200px';
+        container.style.width = '400px';
+​
+        //Rather than having the mousedown and mouseup events add or remove handlers,
+        //we have the events set states. There are two functions for document events, and
+        //two for every slider (blue box) in the document. Below we have 4 functions and they
+        //are never removed or re-assigned:
+​
+        //Document mouse event functions:
+        document.onmousedown = function () {
+            document.mouseState = 'down';
+        };
+​
+        document.onmouseup = function () {
+            document.mouseState = 'up';
+            slider.mouseState = 'up';
+        };
+​
+        //Slider mouse event functions:
+        slider.onmousedown = function (e) {
+            slider.lastMousePosY = e.pageY; //<-this is so that if you lift the mouse, move it and grab the slider again, it will not jump.
+            slider.lastMousePosX = e.pageX;
+            slider.mouseState = 'down';
+            document.mouseState = 'down';
+        };
+​
+        slider.onmouseup = function (e) {
+            slider.mouseState = 'up';
+            document.mouseState = 'up';
+        };
+​
+        //Helper function. Not strictly required, but will make the logic down the bottom
+        //easier to follow by simplifying nested parens
+        var getAtInt = function getAtInt(obj, attrib) {
+            return parseInt(obj.style[attrib], 10);
+        };
+​
+​
+        //Below is the Drag-logic function. Any mouse movement on the document fires this handler.
+​
+        //The outermost if-statement checks to see if this (or potentially any other) div
+        //is being dragged. This is done by examining the state variables as set
+        //above.
+​
+        //The inner if-comparisons check to make sure we only
+        //dragging the slider within the bounds of the container. If so, 
+        //then set the slider to the newly proposed coordinates. This is
+        //done by adding the X and Y deltas of the cursor location from the previous
+        //loop through here. Then storing the current mouse coordinates for next time
+        //here. 
+        document.onmousemove = function (e) {
+            if ((document.mouseState === 'down') && (slider.mouseState === 'down')) {
+                slider.proposedNewPosY = getAtInt(slider, 'top') + e.pageY - slider.lastMousePosY;
+                slider.proposedNewPosX = getAtInt(slider, 'left') + e.pageX - slider.lastMousePosX;
+​
+                if (slider.proposedNewPosY < getAtInt(container, 'top')) {
+                    slider.style.top = container.style.top;
+                } else if (slider.proposedNewPosY > getAtInt(container, 'top') + getAtInt(container, 'height') - getAtInt(slider, 'height')) {
+                    slider.style.top = getAtInt(container, 'top') + getAtInt(container, 'height') - getAtInt(slider, 'height') + 'px';
+                } else {
+                    slider.style.top = slider.proposedNewPosY + 'px';
+                }
+​
+                if (slider.proposedNewPosX < getAtInt(container, 'left')) {
+                    slider.style.left = container.style.left;
+                } else if (slider.proposedNewPosX > getAtInt(container, 'left') + getAtInt(container, 'width') - getAtInt(slider, 'width')) {
+                    slider.style.left = getAtInt(container, 'left') + getAtInt(container, 'width') - getAtInt(slider, 'width') + 'px';
+                } else {
+                    slider.style.left = slider.proposedNewPosX + 'px';
+                }
+                slider.lastMousePosY = e.pageY;
+                slider.lastMousePosX = e.pageX;
+            }
+​
+            // place other slider logic block(s) here for more sliders on the page or for some other moving element:
+            //if ((document.mouseState === 'down') && (someOtherSlider.mouseState === 'down')) {   .......
+        };
+    </script>
+</body>

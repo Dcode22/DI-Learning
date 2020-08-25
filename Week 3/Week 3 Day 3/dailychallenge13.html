@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>onlyletters</title>
+</head>
+<body>
+<input type="text">
+<script>
+	var indiv = document.querySelector("input");
+	indiv.addEventListener("keyup", onlyLetters);
+	function onlyLetters(){
+		var input = document.querySelector("input").value;
+		var inputstring = input.toString();
+		var nospec = inputstring.replace(/[^A-Za-z]/g, ""); 
+		var onllet = nospec.replace(/[0-9]/g, "");
+		document.querySelector("input").value = onllet;
+	}
+</script>
+</body>
+</html>

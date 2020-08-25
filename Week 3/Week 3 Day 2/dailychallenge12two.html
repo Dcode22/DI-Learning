@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <meta charset="utf-8" />
+  <title>Challenge: Mad Libs</title>
+ </head>
+ <body>
+
+    <h1>Mad Libs</h1>
+    <ul>
+      <li>Noun: <input type="text" id="noun"></li>
+      <li>Noun 2: <input type="text" id="noun2"></li>
+      <li>Adjective: <input type="text" id="adjective"></li>
+      <li>Adjective 2: <input type="text" id="adjective2"></li>
+      <li>Verb: <input type="text" id="verb"></li>
+      <li>Verb 2: <input type="text" id="verb2"></li>
+      <li>Someone's Name: <input type="text" id="person"></li>
+    </ul>
+    <button id="lib-button">Lib it!</button>
+    
+    <p>Generated story: 
+    <span id="story"></span>
+    </p>
+
+    <script>
+     let libButton = document.getElementById('lib-button');
+        let libIt = function() {
+        	   let libButton = document.getElementById('lib-button');
+        var adjective = document.getElementById('adjective').value;
+        var adjective2 = document.getElementById('adjective2').value;
+        var noun = document.getElementById('noun').value;
+        var noun2 = document.getElementById('noun2').value;
+        var verb = document.getElementById('verb').value;
+        var verb2 = document.getElementById('verb2').value;
+        var person = document.getElementById('person').value;
+            let storyDiv = document.getElementById("story");
+            storyDiv.innerHTML = "One black night a " +adjective+ " annoying " +noun+ " was " +verb+ " down a " +noun2+ ". Then it fell on " +person+ ", who had been " +verb2+ " at the " +adjective2+ "bottom, and " +person+ " was no longer. The end." ;
+        };
+        libButton.addEventListener('click', libIt);
+        
+
+    </script>
+
+ </body>
+</html>

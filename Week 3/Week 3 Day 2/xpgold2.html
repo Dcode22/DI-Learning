@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>genres</title>
+</head>
+<body>
+<select id="genres">
+  <option value="rock">Rock</option>
+  <option value="blues" selected>Blues</option>
+</select>
+<script>
+	var select = document.getElementById('genres');
+	var newoption = document.createElement('option');
+	newoption.innerHTML = "Classical";
+	select.appendChild(newoption);
+	newoption.setAttribute("selected", "");
+
+</script>
+</body>
+</html>

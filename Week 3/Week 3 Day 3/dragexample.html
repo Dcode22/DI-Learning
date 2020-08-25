@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>dragging</title>
+</head>
+<body>
+	<div id="box-div" class="box" draggable="true" style="width: 100px; height: 100px; background-color: blue;"></div>
+
+
+<script>
+	var box = document.querySelector("#box-div");
+	box.addEventListener("drag", function (event) {
+        box.style.left = event.clientX + "px";
+        box.style.top = event.clientY + "px";
+        console.log("drag" + event.clientX + " " + event.clientY);
+      });
+      box.addEventListener("dragover", function (event) {
+        console.log("dragover" + event.clientX + " " + event.clientY);
+      });
+​
+      document.addEventListener("dragenter", function (event) {
+        console.log("dragenter" + event.clientX + " " + event.clientY);
+      });
+​
+      box.addEventListener("dragend", function (event) {
+        box.style.left = event.clientX + "px";
+        box.style.top = event.clientY + "px";
+        console.log("drop" + event.clientX + " " + event.clientY);
+      });
+
+</script>
+</body>
+</html>

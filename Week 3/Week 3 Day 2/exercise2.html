@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+<p><strong>Hello</strong> I hope you are enjoying <strong>this</strong> class. At the
+<strong>end</strong> you <strong>will</strong> be great Developers!
+<strong>Enjoy</strong> the <strong>JavaScript </strong> lessons</p>
+</body>
+<script>
+var bold;
+	function getBoldItems(){
+		bold = document.getElementsByTagName("strong");
+	}
+	getBoldItems();
+	
+console.log(bold);
+function highlight(){
+	for (i = 0; i < bold.length; i++){
+		bold[i].style.color = "blue";
+	}
+	}
+function returnToNormal(){
+	for (i = 0; i < bold.length; i++){
+		bold[i].style.color = "black";
+	}
+	}
+var paragraph = document.querySelector("p");
+paragraph.addEventListener('mouseover', highlight);
+paragraph.addEventListener('mouseout', returnToNormal);
+
+
+	
+
+	
+</script>
+</html>

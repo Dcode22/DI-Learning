@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<body>
+  <div class="users">Users:</div>
+  <ul>
+    <li>John</li>
+    <li>Pete</li>
+  </ul>
+  <script>
+  	var users = document.querySelector("div");
+  	users.style.backgroundColor = "lightBlue";
+  	users.style.padding = "20px";
+  	var list = document.querySelector("ul");
+
+  	list.childNodes[1].remove();
+  	list.childNodes[2].style.border = "black solid 3px";
+  	var body = document.querySelector("body");
+  	body.style.fontSize = "60px";
+  </script>
+</body>
+</html>

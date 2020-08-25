@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+
+
+
+
+<article>
+    <h1> Some Facts </h1>
+    <h2> The CHOCOLATE </h2>
+    <p>Chocolate is made from tropical Theobroma cacao tree seeds. Its earliest use dates back to the Olmec civilization in Mesoamerica.</p>
+    <p> After the European discovery of the Americas, chocolate became very popular in the wider world, and its demand exploded. </p>
+    <p> Chocolate has since become a popular food product that millions enjoy every day, thanks to its unique, rich, and sweet taste.</p> 
+    <p> But what effect does eating chocolate have on our health?</p> 
+</article>
+
+<label>What is your name?</label><input type="text" name="userName">
+<label>What did you think of the article?</label><input type="text" name="questionToUser">
+
+<script> 
+	var p = document.querySelectorAll("p");
+	for (i = 0; i < p.length; i++) {
+		p[i].classList.add('para_Article');
+	}
+	
+	
+// 2
+	let article = document.querySelector("article");
+	article.removeChild(article.lastElementChild);
+
+// 3
+	let h2 = document.querySelector("h2");
+	h2.addEventListener('click', function(){
+		h2.remove();
+	});
+
+// 4 
+	let h1 = document.querySelector('h1');
+	h1.style.fontSize = Math.floor(Math.random()*100)+"px";
+// 5
+	let p1 = document.getElementsByTagName("p")[0];
+	p1.addEventListener('click', function() {
+		p1.style.color = "transparent";
+})
+
+// 6
+	let p2 = document.getElementsByTagName("p")[1];
+	p2.style.opacity = 1;
+	p2.addEventListener('click', function() {
+		setInterval(function(){
+			p2.style.opacity -= 0.1;
+		}, 500);
+	}
+	);
+
+// 7 
+	var button = document.createElement("button");
+	button.innerHTML = "Submit";
+	document.body.appendChild(button);
+	button.addEventListener('click', addToTable);
+	function addToTable() {
+		var name = document.getElementsByTagName("input")[0].value;
+		var questionToUser = document.getElementsByTagName("input")[1].value;
+		console.log(name);
+		console.log(questionToUser);
+		var div = document.createElement("div");
+		div.setAttribute("id", "tbll");
+		document.body.appendChild(div);
+		document.getElementById("tbll").innerHTML = "<table border='1'><tr><th>Name</th><th>Answer</th></tr><tr><td>" + name + "</td><td>" + questionToUser + "</td></tr>"
+	}
+
+
+
+
+
+</script>
+</body>
+</html>
