@@ -1,7 +1,7 @@
 # # ex1
-# print("Hello world\nHello world\nHello world\nHello world\n")
-# # ex2
-# print((99**3)*8)
+# print("Hello world\nHello world\nHello world\nHello world\n") Can you redo this and calling "Hello world\n" only one time ? 
+# ex2
+# print((99**3)*8) 
 # # ex3
 # name = "Dovid"
 # age = 22
