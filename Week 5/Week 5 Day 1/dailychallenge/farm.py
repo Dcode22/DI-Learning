@@ -8,15 +8,13 @@ class Farm:
         elif animal in self.animals:
             self.animals[animal] += quantity
     def get_info(self):
-        print("McDonald's farm") 
+        print(f"{self.name}'s farm") 
         for i in self.animals:
             print(i, "      :", self.animals[i])
         print("E-I-E-I-O!")
     def get_animal_types(self):
-        self.animal_types = []
-        for i in self.animals:
-            self.animal_types.append(i)
-        self.animal_types.sort()
-        return self.animal_types
+        animals = list(self.animals.keys())
+        animals.sort()
+        return animals
     def get_short_info(self):
-        print(f"McDonald's farm has {self.get_animal_types()}.")
+        print(f"{self.name}'s farm has {self.get_animal_types()}.")
