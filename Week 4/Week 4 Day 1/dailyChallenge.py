@@ -4,6 +4,17 @@ print("last character is: ", user_string[-1])
 for x in range(len(user_string)):
     print(user_string[0:x+1])
 
+#this way to swap character is correct but there are lots of duplication and we dont like to do that. for solving in you can use the random module.
+# Below the jonathan solutions
+#Method1
+# new_text += text[::-2]
+# new_text += text[::2]
+#Method2
+# from random import randint
+# for i in range(10):
+# 	new_text += text[randint(0,10)]
+# print(new_text)
+
 user_string = list(user_string)
 print(user_string)
 temp = user_string[0]
