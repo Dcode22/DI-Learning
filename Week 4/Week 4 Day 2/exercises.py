@@ -25,6 +25,8 @@
 # ours_fav_nums = tuple(ours_fav_nums)
 # print(ours_fav_nums)
 
+# for the Exercise 2 you didnt say if with tuple its working or not ? but you need to understand that tuple is immutable so after creating a tuple you cannot modify the tuple 
+
 # ex3
 # list = [i*0.5 for i in range(3,11)]
 # print(list)
@@ -41,7 +43,7 @@
 # family = ["Mom", "Dad", "Sister", "Brother"]
 # ticketsprice = 0
 # for i in range(len(family)): 
-#     sentence = str("How old are you " + (family[i]) + "?: ")
+#     sentence = str("How old are you " + (family[i]) + "?: ") # Try to use f"{var}" instad of + concatenation
 #     age = int(input(sentence))
 #     if age >= 12:
 #         ticket = 15
@@ -54,12 +56,13 @@
 friends = ("Jack", "Dan", "Carl")
 friends_allowed=[]
 for i in range(len(friends)): 
-    sentence2 = str("How old are you " + (friends[i]) + "?: ")
+    sentence2 = str("How old are you " + (friends[i]) + "?: ") # here also try to use f"{var}"
     age = int(input(sentence2))
-    if age >= 16 and age <= 21: 
+    if age >= 16 and age <= 21: # In python you can write if  16 <= age <= 21
         friends_allowed.append(friends[i])
     else:
         continue
+    # Here the else: continue is useless you can remove it.
 print(friends_allowed, "can come")
 
 
