@@ -42,6 +42,20 @@ class Text:
             if self.word_frequency1(self.unique_word_list[i+1]) < self.word_frequency1(self.unique_word_list[i]):
                 self.most_common_word = self.unique_word_list[i]
         return self.most_common_word
+    
+    @staticmethod
+	def from_file(file_path):
+		with open(file_path, 'r') as f:
+			file_text = f.read()
+		return Text(file_text)
+
+
+
+class TextModification(Text):
+​
+	def without_punctuation():
+		pass
+
 
 
 
