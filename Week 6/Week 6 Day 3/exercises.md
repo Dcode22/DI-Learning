@@ -50,3 +50,4 @@ INSERT INTO rental (staff_id, rental_date, inventory_id, customer_id, return_dat
 VALUES(1, '2020-09-15 00:00:00', 1525, (SELECT customer_id FROM customer WHERE first_name = 'Davi'), '2020-09-27 00:00:00'),
 (1, '2020-09-15 00:00:00', 2079, (SELECT customer_id FROM customer WHERE first_name = 'Davi'), '2020-09-27 00:00:00'),
 (1, '2020-09-15 00:00:00', 2001, (SELECT customer_id FROM customer WHERE first_name = 'Davi'), '2020-09-27 00:00:00')
+
