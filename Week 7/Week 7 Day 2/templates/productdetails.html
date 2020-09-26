@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>{{product["Name"]}}</h1>
+<h3>Product details:</h3>
+<ul>
+	<li>Category: {{product["Category"]}}</li>
+	<li>Description: {{product["Description"]}}</li>
+	<li>Supplier: {{product["SupplierName"]}}</li>
+	<li>Price: {{product["Price"]}}EUR</li>
+	<li>Weight: {{product["WeightMeasure"]}}KG</li>
+	<li>Status: {{product["Status"]}}</li>
+</ul>
+{% endblock %}
