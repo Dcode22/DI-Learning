@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+    <div>
+        <h2>To Do:</h2>
+        
+        {% csrf_token %}
+        {% for item in todo %}
+        {{item}} 
+        {% endfor %}
+    </div>
+{% endblock %}

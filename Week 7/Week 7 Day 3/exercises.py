@@ -1,7 +1,6 @@
 from flask import Flask
 
-# exercise 1
+# exercise1
 import secrets
 key = secrets.token_urlsafe(256)
 
-# exercise 2

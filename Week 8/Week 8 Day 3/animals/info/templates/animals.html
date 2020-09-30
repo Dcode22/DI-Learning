@@ -1,0 +1,12 @@
+<html>
+    <head>
+        <title>
+
+        </title>
+    </head>
+    <body>
+        {% for animal in animals%}
+        <a href="{% url 'animal' animal.id %}">{{ animal.name }}</a>
+        {% endfor %}
+    </body>
+</html>
