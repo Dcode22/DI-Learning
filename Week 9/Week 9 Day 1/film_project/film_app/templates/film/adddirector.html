@@ -1,0 +1,9 @@
+{% extends 'partials/base.html' %}
+
+{% block content %}
+<form method="POST">
+{{form}}
+{% csrf_token %}
+<button type="submit">Submit</button>
+</form>
+{% endblock %}

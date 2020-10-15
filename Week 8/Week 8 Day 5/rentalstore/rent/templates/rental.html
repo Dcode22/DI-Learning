@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<p>Customer ID: {{rental.customer.id}}</p>
+<p>Vehicle ID: {{rental.vehicle.id}}</p>
+<p>Rental Date: {{rental.rental_date}}</p>
+<p>Return Date: {{rental.return_date}}</p>
+
+{% endblock %}
