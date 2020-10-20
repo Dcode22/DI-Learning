@@ -1,0 +1,69 @@
+{% extends 'partials/base.html' %}
+
+{% block content %}
+<h1>MY SALES</h1>
+
+
+    {% for sale in user.profile.sales.all %}
+        
+        <div class="cardforsale">
+            <h2>Card For Sale:</h2>
+            <div class="player_card">
+                <div>
+                    <h3 class="playername">{{sale.card.name}}</h3>
+                </div>
+                <ul style="list-style-type: none;" class="infolist">
+                    <li>Position: {{sale.card.position}}</li>
+                    <li>Team: {{sale.card.team.name}}</li>
+                    <li>Jersey #: {{sale.card.jersey_number}}</li>
+                    <li>Height: {{sale.card.height_ft}}ft, {{sale.card.height_in}}in</li>
+                    <li>Weight: {{sale.card.weight}}</li>
+                    <li>Bats: {{sale.card.bats}}</li>
+                    <li>Throws: {{sale.card.throws}}</li>
+                    <li>Birth Day: {{sale.card.birth_date}}</li>
+                    <li>Player ID: {{sale.card.player_id}}</li>
+                </ul>
+            
+                <a href="{% url 'deletesale' sale_id=sale.id %}"><h4 class="deletesalebutton">CANCEL SALE</h4></a>
+                
+
+            </div>
+        </div>
+
+
+
+        <div class="offersreceived">
+            <h3>Offers recieved for {{sale.card.name}}:</h3>
+            <div class="cardoffers">
+                {% for offer in sale.bids.all %}
+                
+                    <div class="player_card">
+                        <div>
+                            <h3 class="playername">{{offer.card.name}}</h3>
+                        </div>
+
+                        <ul style="list-style-type: none;" class="infolist">
+                            <li>Position: {{offer.card.position}}</li>
+                            <li>Team: {{offer.card.team.name}}</li>
+                            <li>Jersey #: {{offer.card.jersey_number}}</li>
+                            <li>Height: {{offer.card.height_ft}}ft, {{offer.card.height_in}}in</li>
+                            <li>Weight: {{offer.card.weight}}</li>
+                            <li>Bats: {{offer.card.bats}}</li>
+                            <li>Throws: {{offer.card.throws}}</li>
+                            <li>Birth Day: {{offer.card.birth_date}}</li>
+                            <li>Player ID: {{offer.card.player_id}}</li>
+                        </ul>
+                    
+                        <a href="{% url 'deletesale' sale_id=sale.id %}"><h4 class="deletesalebutton">ACCEPT</h4></a>
+                        <a href="{% url 'deletesale' sale_id=sale.id %}"><h4 class="deletesalebutton">REJECT</h4></a>
+                    </div>
+                
+
+                {% endfor %}
+            </div>
+        </div>
+
+    {% endfor %}
+
+
+{% endblock %}

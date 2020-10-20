@@ -1,0 +1,63 @@
+{% extends 'partials/base.html' %}
+{% load static %}
+
+
+{% block content %}
+<h2>{{user.username}}</h2>
+<div class="user-profile">
+    <div>
+        
+        <img src="{{user.profile.image.url}}" id="profilepic">
+    </div>
+    <div class="user-info-grid">
+        <div><b>Username:  </b>  {{user.username}}</div>
+        <div><b>First Name:  </b>  {{user.first_name}}</div>
+        <div><b>Last Name:  </b>  {{user.last_name}}</div>
+        <div><b>Email:  </b>  {{user.email}}</div>
+        <div><input type="submit" style="margin-left: 10px;"></div>
+        
+    </div>
+
+
+</div>
+
+
+<h2>My Cards:</h2>
+<div id="cardsowned">
+    {% for card in user.profile.cards_owned.all %}
+        
+        
+        <div class="player_card">
+            <div>
+                <h3 class="playername">{{card.name}}</h3>
+            </div>
+            <ul style="list-style-type: none;" class="infolist">
+                <li>Position: {{card.position}}</li>
+                <li>Team: {{card.team.name}}</li>
+                <li>Jersey #: {{card.jersey_number}}</li>
+                <li>Height: {{card.height_ft}}ft, {{card.height_in}}in</li>
+                <li>Weight: {{card.weight}}</li>
+                <li>Bats: {{card.bats}}</li>
+                <li>Throws: {{card.throws}}</li>
+                <li>Birth Day: {{card.birth_date}}</li>
+                <li>Player ID: {{card.player_id}}</li>
+            </ul>
+            <div class="mycardbuttons"  >
+                {% if card not in cards_for_sale %}
+                <a href="{% url 'sell' profile_id=user.profile.id card_id=card.id %}"><h4 class="sellbutton">SELL</h4></a>
+                {% else %}
+                <a href="{% url 'mysales' %}"><h4 class="forsaletag">FOR SALE</h4></a>
+                {%endif%}
+                {% if card in cards_offered %}
+                <a href="{% url 'myoffers' %}"><h4 class="offeredtag">OFFERED</h4></a>
+                {%endif%}
+            </div>
+
+        </div>
+        
+       
+    {% endfor %}
+
+</div>
+
+{% endblock %}

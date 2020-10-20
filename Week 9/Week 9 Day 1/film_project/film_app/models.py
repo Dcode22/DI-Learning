@@ -28,6 +28,13 @@ class Film(models.Model):
     def __str__(self):
         return self.title
 
+class Comment(models.Model):
+    user = 
+    name = models.CharField(max_length=80)
+    email = models.EmailField()
+    body = models.TextField()
+    created_on = models.DateTimeField(auto_now_add=True)
+
 # f= Film()
 # f.available_in_countries.all()
 # c= Country()

@@ -1,0 +1,41 @@
+{% extends 'partials/base.html' %}
+{% block title %}
+<h4>Homepage</h4>
+{% endblock %}
+{% block content %}
+<h1>Welcome to TOPS Trades:</h1>
+
+<h2>Cards For Sale: </h2>
+<div id="cardsforsale">
+    
+        {% for sale in sales %}
+        <div>
+                <div class="player_card">
+                    <div>
+                        <h3 class="playername">{{sale.card.name}}</h3>
+                    </div>
+                    <ul style="list-style-type: none;" class="infolist">
+                        <li>Position: {{sale.card.position}}</li>
+                        <li>Team: {{sale.card.team.name}}</li>
+                        <li>Jersey #: {{sale.card.jersey_number}}</li>
+                        <li>Height: {{sale.card.height_ft}}ft, {{sale.card.height_in}}in</li>
+                        <li>Weight: {{sale.card.weight}}</li>
+                        <li>Bats: {{sale.card.bats}}</li>
+                        <li>Throws: {{sale.card.throws}}</li>
+                        <li>Birth Day: {{sale.card.birth_date}}</li>
+                        <li>Player ID: {{sale.card.player_id}}</li>
+                    </ul>
+                    
+                </div>
+                {% if user.is_authenticated %}
+                    {% if sale.profile.id != user.profile.id %}
+                    <button type="submit" class="btn btn-primary"><a style="color: white;" href="{% url 'bid' sale_id=sale.id %}">Place a bid</a> </button>
+                    {% endif %}
+                {% endif %}
+        </div>
+        {% endfor %}
+    
+</div>
+
+ 
+{% endblock %}

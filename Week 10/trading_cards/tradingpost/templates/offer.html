@@ -1,0 +1,40 @@
+{% extends 'partials/base.html' %}
+{% load bootstrap %}
+{% block content %}
+<h2>You offered: </h2>
+<div class="player_card">
+    <div>
+        <h3 class="playername">{{card.name}}</h3>
+    </div>
+    <ul style="list-style-type: none;" class="infolist">
+        <li>Position: {{card.position}}</li>
+        <li>Team: {{card.team.name}}</li>
+        <li>Jersey #: {{card.jersey_number}}</li>
+        <li>Height: {{card.height_ft}}ft, {{card.height_in}}in</li>
+        <li>Weight: {{card.weight}}</li>
+        <li>Bats: {{card.bats}}</li>
+        <li>Throws: {{card.throws}}</li>
+        <li>Birth Day: {{card.birth_date}}</li>
+        <li>Player ID: {{card.player_id}}</li>
+    </ul>
+    
+</div>
+<h2>To buy: </h2>
+<div class="player_card">
+    <div>
+        <h3 class="playername">{{sale.card.name}}</h3>
+    </div>
+    <ul style="list-style-type: none;" class="infolist">
+        <li>Position: {{sale.card.position}}</li>
+        <li>Team: {{sale.card.team.name}}</li>
+        <li>Jersey #: {{sale.card.jersey_number}}</li>
+        <li>Height: {{sale.card.height_ft}}ft, {{sale.card.height_in}}in</li>
+        <li>Weight: {{sale.card.weight}}</li>
+        <li>Bats: {{sale.card.bats}}</li>
+        <li>Throws: {{sale.card.throws}}</li>
+        <li>Birth Day: {{sale.card.birth_date}}</li>
+        <li>Player ID: {{sale.card.player_id}}</li>
+    </ul>
+    
+</div>
+{% endblock %}
