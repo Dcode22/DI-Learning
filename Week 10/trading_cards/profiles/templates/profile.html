@@ -14,7 +14,7 @@
         <div><b>First Name:  </b>  {{user.first_name}}</div>
         <div><b>Last Name:  </b>  {{user.last_name}}</div>
         <div><b>Email:  </b>  {{user.email}}</div>
-        <div><input type="submit" style="margin-left: 10px;"></div>
+        <div><button type="submit"><a href="{% url 'edit_profile' %}">Edit Profile</a></button></div>
         
     </div>
 

@@ -32,6 +32,11 @@
                     <button type="submit" class="btn btn-primary"><a style="color: white;" href="{% url 'bid' sale_id=sale.id %}">Place a bid</a> </button>
                     {% endif %}
                 {% endif %}
+                {% if sale.profile.user != request.user %}
+                Seller: {{sale.profile.user.username}}
+                {% elif sale.profile.user == request.user %}
+                Seller: Me
+                {% endif %}
         </div>
         {% endfor %}
     

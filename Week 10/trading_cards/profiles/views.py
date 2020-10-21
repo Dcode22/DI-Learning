@@ -1,6 +1,6 @@
 from django.contrib.auth import login, authenticate
 from .models import Profile, Card, Sale
-from .forms import SignUpForm
+from .forms import SignUpForm, EditProfileForm, EditUserForm
 from django.shortcuts import render, redirect
 import random
 
@@ -41,3 +41,18 @@ def profile(request):
 
     return render(request, 'profile.html', content)
 
+
+def editProfile(request):
+    if request.method == 'POST':
+        form1 = EditProfileForm(data=request.POST, instance=request.user.profile)
+        form2 = EditUserForm(data=request.POST, instance=request.user)
+        form1.save()
+        form2.save()
+        # update.user = request.user
+        return redirect('profile')
+    else:
+        form1 = EditProfileForm(instance=request.user.profile)
+        form2 = EditUserForm(instance=request.user)
+
+
+    return render(request, 'edit_profile.html', {'form1': form1, 'form2': form2})
