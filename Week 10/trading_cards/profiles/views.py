@@ -1,8 +1,28 @@
-from django.contrib.auth import login, authenticate
-from .models import Profile, Card, Sale
+from django.contrib.auth import login, authenticate, update_session_auth_hash
+from .models import Profile, Card, Sale, Bid
 from .forms import SignUpForm, EditProfileForm, EditUserForm
 from django.shortcuts import render, redirect
 import random
+from django.contrib import messages
+from django.contrib.auth.forms import PasswordChangeForm
+
+
+def change_password(request):
+    if request.method == 'POST':
+        form = PasswordChangeForm(request.user, request.POST)
+        if form.is_valid():
+            user = form.save()
+            update_session_auth_hash(request, user)  # Important!
+            messages.success(request, 'Your password was successfully updated!')
+            return redirect('profile')
+        
+        else:
+            messages.error(request, 'Please correct the error below.')
+    else:
+        form = PasswordChangeForm(request.user)
+    return render(request, 'change_password.html', {
+        'form': form
+    })
 
 
 def signup(request):
@@ -56,3 +76,20 @@ def editProfile(request):
 
 
     return render(request, 'edit_profile.html', {'form1': form1, 'form2': form2})
+
+
+def rejectOffer(request, offer_id):
+    Bid.objects.filter(id=offer_id).delete()
+    # still have to notify bidder
+    return redirect('mysales')
+
+
+def acceptOffer(request, offer_id):
+    offer = Bid.objects.get(id=offer_id)
+    offer.sale.profile.cards_owned.add(offer.card)
+    offer.profile.cards_owned.add(offer.sale.card)
+    offer.profile.cards_owned.remove(offer.card)
+    offer.sale.profile.cards_owned.remove(offer.sale.card)
+    offer.sale.delete()
+    return redirect('mysales')
+

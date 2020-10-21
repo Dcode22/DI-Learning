@@ -4,8 +4,11 @@
 <h2>Edit Profile</h2>
 <form action="." method="post">
     {% csrf_token %}
-    {{ form1.as_p }}
-    {{ form2.as_p }}
-    <button type="submit">Update Profile</button>
+    {{form1.as_p}}
+    {{form2.as_p}}
+    <button type="submit" class="btn btn-primary" style="margin-bottom: 20px" >Update Profile</button>
 </form>
+
+<p>To change your password click here:</p>
+<button type="submit" class="btn btn-primary"><a style="color: white;" href="{% url 'change_password' %}">Change Password</a></button>
 {% endblock %}

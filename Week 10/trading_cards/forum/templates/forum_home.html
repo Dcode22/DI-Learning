@@ -1,0 +1,9 @@
+{% extends 'partials/base.html' %}
+{% block content %}
+TOPS FORUM:
+<a href="{% url 'add_thread' %}">Start a thread</a>
+{% for thread in Thread.objects.all %}
+<a href="{% url 'thread' thread_id=thread.id %}">{{thread.title}}</a>
+
+{% endfor %}
+{% endblock%}
