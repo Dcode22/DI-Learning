@@ -1,74 +1,79 @@
 {% extends 'partials/base.html' %}
+{% load static %}
 
 {% block content %}
 <h1>MY SALES</h1>
 
 
-    {% for sale in user.profile.sales.all %}
+{% for sale in user.profile.sales.all %}
+    Sale:
+    <div class="card" style="width: 25%;">
+     
+      <div class="card-body">
+        <h5 class="card-title"><b>{{sale.card.name}}</b> <img src="{% static 'css/mlblogo.jpg' %}" style="width: 50px; margin: 3px;"></h5> 
         
-        <div class="cardforsale">
-            <h2>Card For Sale:</h2>
-            <div class="player_card">
-                <div>
-                    <h3 class="playername">{{sale.card.name}}</h3>
-                </div>
-                <ul style="list-style-type: none;" class="infolist">
-                    <li>Position: {{sale.card.position}}</li>
-                    <li>Team: {{sale.card.team.name}}</li>
-                    <li>Jersey #: {{sale.card.jersey_number}}</li>
-                    <li>Height: {{sale.card.height_ft}}ft, {{sale.card.height_in}}in</li>
-                    <li>Weight: {{sale.card.weight}}</li>
-                    <li>Bats: {{sale.card.bats}}</li>
-                    <li>Throws: {{sale.card.throws}}</li>
-                    <li>Birth Day: {{sale.card.birth_date}}</li>
-                    <li>Player ID: {{sale.card.player_id}}</li>
-                </ul>
+        <ul style="list-style-type: none;" class="infolist card-text">
+            <li>Position: {{sale.card.position}}</li>
+            <li>Team: {{sale.card.team.name}}</li>
+            <li>Jersey #: {{sale.card.jersey_number}}</li>
+            <li>Height: {{sale.card.height_ft}}ft, {{sale.card.height_in}}in</li>
+            <li>Weight: {{sale.card.weight}}</li>
+            <li>Bats: {{sale.card.bats}}</li>
+            <li>Throws: {{sale.card.throws}}</li>
+            <li>Birth Day: {{sale.card.birth_date}}</li>
+            <li>Player ID: {{sale.card.player_id}}</li>
+        </ul>
+      
+      </div>
+      <div class="card-footer">
+        <small class="text-muted footer-buttons">
+            <a href="{% url 'deletesale' sale_id=sale.id %}"> <button class="btn btn-danger">Cancel Sale</button></a>
+        
+        </small>
+      </div>
+    </div>
+
+    <h3>Offers recieved for {{sale.card.name}}:</h3>
+    {% if sale.bids.all %}
+    <div class="card-columns" id="bid-deck" style="padding: 20px;">
+        {% for offer in sale.bids.all %}
+            <div class="card">
             
-                <a href="{% url 'deletesale' sale_id=sale.id %}"><h4 class="deletesalebutton">CANCEL SALE</h4></a>
+                <div class="card-body">
+                <h5 class="card-title"><b>{{offer.card.name}}</b> <img src="{% static 'css/mlblogo.jpg' %}" style="width: 50px; margin: 3px;"></h5> 
                 
-
-            </div>
-        </div>
-
-
-
-        <div class="offersreceived">
-            <h3>Offers recieved for {{sale.card.name}}:</h3>
-            {% if sale.bids.all %}
-                <div class="cardoffers">
-                    {% for offer in sale.bids.all %}
-                    <div>
-                        User: {{offer.profile.user.username}} offered:
-                        <div class="player_card">
-                            <div>
-                                <h3 class="playername">{{offer.card.name}}</h3>
-                            </div>
-
-                            <ul style="list-style-type: none;" class="infolist">
-                                <li>Position: {{offer.card.position}}</li>
-                                <li>Team: {{offer.card.team.name}}</li>
-                                <li>Jersey #: {{offer.card.jersey_number}}</li>
-                                <li>Height: {{offer.card.height_ft}}ft, {{offer.card.height_in}}in</li>
-                                <li>Weight: {{offer.card.weight}}</li>
-                                <li>Bats: {{offer.card.bats}}</li>
-                                <li>Throws: {{offer.card.throws}}</li>
-                                <li>Birth Day: {{offer.card.birth_date}}</li>
-                                <li>Player ID: {{offer.card.player_id}}</li>
-                            </ul>
-                        
-                            <a href="{% url 'accept_offer' offer_id=offer.id %}"><h4 class="deletesalebutton">ACCEPT</h4></a>
-                            <a href="{% url 'reject_offer' offer_id=offer.id %}"><h4 class="deletesalebutton">REJECT</h4></a>
-                        </div>
-                    
-                    </div>
-                    {% endfor %}
+                <ul style="list-style-type: none;" class="infolist card-text">
+                    <li>Position: {{offer.card.position}}</li>
+                    <li>Team: {{offer.card.team.name}}</li>
+                    <li>Jersey #: {{offer.card.jersey_number}}</li>
+                    <li>Height: {{offer.card.height_ft}}ft, {{offer.card.height_in}}in</li>
+                    <li>Weight: {{offer.card.weight}}</li>
+                    <li>Bats: {{offer.card.bats}}</li>
+                    <li>Throws: {{offer.card.throws}}</li>
+                    <li>Birth Day: {{offer.card.birth_date}}</li>
+                    <li>Player ID: {{offer.card.player_id}}</li>
+                </ul>
+                
                 </div>
-            {% else %}
-                None
-            {% endif %}
-        </div>
+                <div class="card-footer">
+                <small class="text-muted">
+                    Bidder: {{offer.profile.user.username}}
+                    <a href="{% url 'accept_offer' offer_id=offer.id %}"> <button class="btn btn-success">Accept</button></a>
+                    <a href="{% url 'reject_offer' offer_id=offer.id %}"> <button class="btn btn-warning">Reject</button></a>
+                
+                </small>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+        {% else %}
+            NONE
+        {% endif %}
+        
+{% endfor %}
 
-    {% endfor %}
+
+    
 
 
 {% endblock %}

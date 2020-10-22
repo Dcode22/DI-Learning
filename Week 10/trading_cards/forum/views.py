@@ -2,11 +2,12 @@ from django.shortcuts import render, redirect
 from django.http import request
 from .models import *
 from .forms import *
+from django.contrib import messages
 
 # Create your views here.
 
 def forum(request):
-    return render(request, "forum_home.html")
+    return render(request, "forum_home.html", {'threads': Thread.objects.all()})
 
 
 def thread(request, thread_id):
@@ -14,10 +15,15 @@ def thread(request, thread_id):
 
 
 def addThread(request):
-    form = ThreadCreateForm(request.user)
+    form = ThreadCreateForm()
     if request.method =="POST":
-        if form.is_valid:
-            Thread.objects.create()
+        form = ThreadCreateForm(request.POST)
+        if form.is_valid():
+            thread = form.save(commit=False)
+            thread.profile = request.user.profile
+            thread.save()
+            messages.success(request, "Thread created successfully!")
+            return redirect('thread', thread.id)
         else:
             return render(request, "add_thread.html", {'form': form})
     if request.method == "GET":
@@ -25,10 +31,16 @@ def addThread(request):
 
 def addPost(request, thread_id):
     thread = Thread.objects.get(id=thread_id)
-    form = PostCreateForm(request.user)
+    form = PostCreateForm()
     if request.method =="POST":
-        if form.is_valid:
-            Post.objects.create()
+        form = PostCreateForm(request.POST)
+        if form.is_valid():
+            post = form.save(commit=False)
+            post.thread = thread
+            post.profile = request.user.profile
+            post.save()
+            messages.success(request, "Post added successfully!")
+            return redirect('thread', thread.id)
         else:
             return render(request, "add_post.html", {'form': form, 'thread': thread})
     if request.method == "GET":
@@ -38,13 +50,19 @@ def addPost(request, thread_id):
 
 def addResponse(request, post_id):
     post = Post.objects.get(id=post_id)
-    form = ResponseCreateForm(request.user)
-    if form.method =="POST":
-        if form.is_valid:
-            Response.objects.create()
+    form = ResponseCreateForm()
+    if request.method =="POST":
+        form = ResponseCreateForm(request.POST)
+        if form.is_valid():
+            response = form.save(commit=False)
+            response.post = post
+            response.profile = request.user.profile
+            response.save()
+            messages.success(request, "Response added successfully!")
+            return redirect('thread', post.thread.id)
         else:
             return render(request, "add_response.html", {'form': form, 'post': post})
-    if form.method == "GET":
+    if request.method == "GET":
         return render(request, "add_response.html", {'form': form, 'post': post})
 
 

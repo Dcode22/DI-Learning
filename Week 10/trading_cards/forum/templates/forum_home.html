@@ -1,9 +1,16 @@
 {% extends 'partials/base.html' %}
+{% load bootstrap %}
 {% block content %}
-TOPS FORUM:
+<h2 style="color: rgb(27, 27, 128);"><b5>TOPPS FORUM:</b5></h2>
 <a href="{% url 'add_thread' %}">Start a thread</a>
-{% for thread in Thread.objects.all %}
-<a href="{% url 'thread' thread_id=thread.id %}">{{thread.title}}</a>
 
-{% endfor %}
+<h3>THREADS:</h3>
+
+<ul class="list-group col-md-8">
+    {% for thread in threads %}
+    <li class="list-group-item"><a href="{% url 'thread' thread_id=thread.id %}">{{thread.title}}</a></li>
+    {% endfor %}
+    
+</ul>
+
 {% endblock%}

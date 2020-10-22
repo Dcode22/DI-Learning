@@ -64,10 +64,11 @@ def profile(request):
 
 def editProfile(request):
     if request.method == 'POST':
-        form1 = EditProfileForm(data=request.POST, instance=request.user.profile)
+        form1 = EditProfileForm(request.POST, request.FILES, instance=request.user.profile)
         form2 = EditUserForm(data=request.POST, instance=request.user)
-        form1.save()
-        form2.save()
+        if form1.is_valid() and form2.is_valid():
+            form1.save()
+            form2.save()
         # update.user = request.user
         return redirect('profile')
     else:

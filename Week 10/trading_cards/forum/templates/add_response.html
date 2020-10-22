@@ -1,10 +1,10 @@
 {% extends 'partials/base.html' %}
 {% load bootstrap %}
 {% block content %}
-Respond to post: {{post.title}} in thread: {{post.thread.title}}
+<b> Respond to post:</b> {{post.title}} <b>By user:</b> {{post.profile.user.username}} <b> In thread:</b> {{post.thread.title}}
 <form method="POST">
-    {{form}}
+    {{form|bootstrap}}
     {% csrf_token %}
-    <input type="submit">Add Thread</input>
+    <input type="submit" value="Add Response">
 </form>
 {% endblock%}
