@@ -3,6 +3,7 @@ from django.http import request
 from .models import *
 from .forms import *
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 
@@ -14,6 +15,7 @@ def thread(request, thread_id):
     return render(request, "thread.html", {'thread': Thread.objects.get(id=thread_id)})
 
 
+@login_required
 def addThread(request):
     form = ThreadCreateForm()
     if request.method =="POST":
@@ -29,6 +31,8 @@ def addThread(request):
     if request.method == "GET":
         return render(request, "add_thread.html", {'form': form})
 
+
+@login_required
 def addPost(request, thread_id):
     thread = Thread.objects.get(id=thread_id)
     form = PostCreateForm()
@@ -47,7 +51,7 @@ def addPost(request, thread_id):
         return render(request, "add_post.html", {'form': form, 'thread': thread})
 
 
-
+@login_required
 def addResponse(request, post_id):
     post = Post.objects.get(id=post_id)
     form = ResponseCreateForm()

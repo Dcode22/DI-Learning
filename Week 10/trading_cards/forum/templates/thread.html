@@ -1,9 +1,13 @@
 {% extends 'partials/base.html' %}
 
 {% block header %}
-<h3><b>TOPS FORUM</b></h3>
-<h2>{{thread.title}}</h2>
-<h4>Created by: {{thread.profile.user.username}} on: {{thread.date_created}}</h4>
+<div class="thread-header">
+<h2><b>Topps Forum:</b></h2>
+
+<div style="background-color: navy; color: white; padding: 10px;">
+<h3> <b>Topic: {{thread.title}}</b></h3>
+<h5>Created by: {{thread.profile.user.username}} on: {{thread.date_created}}</h5>
+</div>
 {% endblock %}
 
 {% block content %}

@@ -3,12 +3,16 @@ body {
     margin: auto;
     font-family: Arial, Helvetica, sans-serif;
     background-color: whitesmoke;
+    color: navy;
+}
 
+form {
+    color: navy;
 }
 
 .navbar {
     background-color: rgb(187, 0, 0);
-    
+    box-shadow: 0 ;
 }
 .topps-logo {
     height: 56px;
@@ -23,10 +27,18 @@ body {
     padding: 20px;
 }
 
+#cardsforsale {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: auto;
+    background-color: grey;
+}
 
 #profilepic {
     width: 150px;
     height: 150px;
+    border-radius: 10%;
+    
 }
 
 .offered-tag {
@@ -42,45 +54,19 @@ body {
 }
 
 
-#cardsforsale {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: auto;
-    background-color: grey;
-}
 
 
-.player_card {
-
-    width: 250px;
-    height: 370px;
-    margin: 10px;
-    padding: 10px;
-    background-image: linear-gradient(to bottom right, silver, lightblue);
-    border: navy 10px solid;
-    border-radius: 10px;
-    box-shadow: 10px 10px 5px rgba(150, 150, 150, 0.3);
-}
 
 
-.playername {
-    color: indigo;
-}
 
 
-.infolist {
-    margin-left: -40px;
-}
-
-.offersreceived {
-    background-color: indianred;
-    
-}
 
 
-.cardforsale {
-    background-color: lawngreen;
-}
+
+
+
+
+
 
 
 .cardoffers {
@@ -94,9 +80,14 @@ body {
     flex-direction: row;
 }
 
-.offer-sale-pair {
-    display: flex;
+.sale-and-offers {
+    display: grid;
+    grid-template-columns: 1fr 1fr 2fr;
     flex-direction: row;
+    padding: 20px;
+    border: 2px black solid;
+    border-radius: 20px;
+
     margin-bottom: 30px;
 }
 .user-name-and-profile {
@@ -123,14 +114,15 @@ body {
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: auto;
     padding: 10px;
+    margin-left: 10px;
 }
 
 .card-columns {
     column-count: 4;
 }
-.card-columns, #bid-deck {
+.card-columns#bid-deck {
     column-count: 2;
-    width: 50%;
+    
 }
 
 .card {
@@ -164,4 +156,40 @@ body {
 .footer-buttons {
     display: flex !important;
     flex-direction: row !important;
+}
+
+.offer-sale-pair {
+    width: 78%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    padding: 20px;
+    border: 2px black solid;
+    border-radius: 20px;
+    margin-bottom: 50px;
+
+}
+
+.exchange-icon-div {
+    padding-top: 60%;
+    text-align: center;
+}
+.exchange-icon-div-bid {
+    margin-top: 60px;
+    margin-bottom: 60px;
+    text-align: center;
+
+}    
+
+.exchange-icon-pic {
+    border-radius: 100%;
+    width: 60%;
+}
+.make-offer-for {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1.5fr;
+}
+
+.thread-header {
+    padding: 20px;
+
 }
