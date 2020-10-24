@@ -191,5 +191,35 @@ form {
 
 .thread-header {
     padding: 20px;
+    
+}
+.thread-title {
+    background-color: navy; 
+    color: white; 
+    
+    margin-right: 30px;
+    padding: 10px;
 
 }
+
+.post-card {
+    margin: 30px;
+    margin-top: 0px;
+    margin-bottom: 5px;
+    padding: 20px;
+    background-color: white;
+}
+.response {
+    margin-top: 20px;
+    margin-left: 40px;
+}
+.user-time-info {
+    color: grey;
+    text-decoration: underline;
+    margin-bottom: 0px;
+}
+
+.forum-text {
+    margin-left: 10px;
+}
+

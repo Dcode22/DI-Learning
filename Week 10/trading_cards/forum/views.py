@@ -31,6 +31,10 @@ def addThread(request):
     if request.method == "GET":
         return render(request, "add_thread.html", {'form': form})
 
+def deleteThread(request, thread_id):
+    Thread.objects.filter(id=thread_id).delete()
+    messages.success(request, "Thread deleted successfully")
+    return redirect('forum')
 
 @login_required
 def addPost(request, thread_id):
@@ -50,6 +54,11 @@ def addPost(request, thread_id):
     if request.method == "GET":
         return render(request, "add_post.html", {'form': form, 'thread': thread})
 
+def deletePost(request, post_id):
+    post = Post.objects.get(id=post_id)
+    post.delete()
+    messages.success(request, "Post deleted successfully")
+    return redirect('thread', post.thread.id)
 
 @login_required
 def addResponse(request, post_id):

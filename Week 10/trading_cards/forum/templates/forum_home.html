@@ -3,7 +3,7 @@
 {% block content %}
 
 <div style="display: flex; justify-content: space-between;">
-<h2><b>Topps Forum:</b></h2>
+<h1>Welcome to Topps Forum</h1>
 <a href="{% url 'add_thread' %}"> <button class="btn btn-primary" style="background-color: navy;box-shadow: 5px 5px 5px lightgrey;"> Start a thread</button></a>
 </div>
 
@@ -13,7 +13,11 @@
 <ul class="list-group col-md-8" style="box-shadow: 5px 5px 5px lightgrey; padding: 0%;">
 
     {% for thread in threads %}
-    <li class="list-group-item"><a href="{% url 'thread' thread_id=thread.id %}">{{thread.title}}</a></li>
+    <li class="list-group-item"><a href="{% url 'thread' thread_id=thread.id %}">{{thread.title}}</a> <h6><b>Started by: </b>{{thread.profile.user.username}} <b>On: </b>{{thread.date_created}}</h6>
+        {% if request.user == thread.profile.user %}
+            <a href="{% url 'delete_thread' thread_id=thread.id %}"> <button class="btn-sm btn-danger"> Delete Thread </button></a>
+        {% endif %}
+    </li>
     {% endfor %}
     
 </ul>
